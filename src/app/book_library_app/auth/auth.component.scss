@@ -1,0 +1,22 @@
+.component_container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.button_group_method, .button_group {
+    display: flex;
+    gap: 3px;
+    display: flex;
+}
+
+.button_group {
+    justify-content: end;
+}
+
+.auth_input {
+    margin-bottom: 5px;
+}

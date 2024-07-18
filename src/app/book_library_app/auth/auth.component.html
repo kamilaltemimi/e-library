@@ -1,0 +1,20 @@
+<div class="component_container">
+    <div class="button_group_method" *ngIf="!selectedAuthMethod">
+        <button (click)="changeAuthMethod('login')" class="btn btn-primary">Login</button>
+        <button (click)="changeAuthMethod('register')" class="btn btn-primary">Register</button>
+    </div>
+
+    <form *ngIf="selectedAuthMethod">
+        <div class="input-group mb-3 auth_input">
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3 auth_input">
+            <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="button_group">
+            <button (click)="goBackToChooseAuthMethod()" type="submit" class="btn btn-primary">Back</button>
+            <button *ngIf="selectedAuthMethod === 'login'" type="submit" class="btn btn-info">Login</button>
+            <button *ngIf="selectedAuthMethod === 'register'" type="submit" class="btn btn-info">Register</button>
+        </div>
+    </form>
+</div>
