@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-auth',
@@ -10,8 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class AuthComponent implements OnInit {
 
   selectedAuthMethod = ''
+  authForm!: FormGroup
+
+  constructor(
+    private fb: FormBuilder
+  ){}
 
   ngOnInit(): void {
+    this.initializeForm()
   }
   
   changeAuthMethod(authMethod: string): void {
@@ -20,6 +26,17 @@ export class AuthComponent implements OnInit {
 
   goBackToChooseAuthMethod(): void {
     this.selectedAuthMethod = ''
+  }
+
+  submitAuthForm(): void {
+    
+  }
+
+  initializeForm(): void {
+    this.authForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]]
+    })
   }
 
 }

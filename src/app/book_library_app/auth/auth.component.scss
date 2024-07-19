@@ -1,8 +1,10 @@
 .component_container {
+    margin-top: 100px;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 56px);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
 }
 
@@ -10,7 +12,6 @@
 .button_group_method, .button_group {
     display: flex;
     gap: 3px;
-    display: flex;
 }
 
 .button_group {
@@ -19,4 +20,10 @@
 
 .auth_input {
     margin-bottom: 5px;
+    width: 285px;
+}
+
+.error_message {
+    color: #ff0000;
+    margin-bottom: 0px;
 }
