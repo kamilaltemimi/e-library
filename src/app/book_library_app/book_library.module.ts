@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
 import { AuthComponent } from './auth/auth.component'
+
+import { SharedModule } from '../shared/shared.module';
 import { BookLibraryRouterModule } from './book_library_router.module'
 
 @NgModule({
@@ -10,7 +12,8 @@ import { BookLibraryRouterModule } from './book_library_router.module'
     ],
     imports: [
         CommonModule,
-        BookLibraryRouterModule
+        BookLibraryRouterModule,
+        SharedModule
     ],
     exports: []
 })
