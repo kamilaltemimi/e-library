@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignore the public directory
+/public
+
+# Ignore the .vscode directory
+/.vscode
