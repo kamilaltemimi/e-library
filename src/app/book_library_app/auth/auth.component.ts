@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 })
 export class AuthComponent implements OnInit {
 
-  selectedAuthMethod = ''
+  selectedAuthMethod: string | null = null
   authForm!: FormGroup
 
   constructor(
@@ -25,7 +25,8 @@ export class AuthComponent implements OnInit {
   }
 
   goBackToChooseAuthMethod(): void {
-    this.selectedAuthMethod = ''
+    this.selectedAuthMethod = null
+    this.authForm.reset()
   }
 
   submitAuthForm(): void {
@@ -34,6 +35,7 @@ export class AuthComponent implements OnInit {
 
   initializeForm(): void {
     this.authForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(30)]],
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]]
     })
