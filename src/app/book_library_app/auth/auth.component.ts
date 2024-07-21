@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { UsersService } from '../../core/services/users.service';
 import { Subject, takeUntil } from 'rxjs';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
-import { User } from '../../core/models/user'
+import { User } from '../../core/models/user';
 import { AuthMethod } from '../../core/enums/auth_method';
 
 @Component({
@@ -58,32 +58,32 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     if (this.selectedAuthMethod === AuthMethod.register) {
       if (existingUsername && existingEmail) {
-        this.error = "This username and email are already chosen"
-        return
+        this.error = "This username and email are already chosen";
+        return;
       } else if (existingEmail) {
-        this.error = "This email is already chosen"
-        return
+        this.error = "This email is already chosen";
+        return;
       } else if (existingUsername) {
-        this.error = "This username is already chosen"
-        return
-      };
+        this.error = "This username is already chosen";
+        return;
+      }
       this.usersService.addUser(this.authForm.value).pipe(takeUntil(this.destroy$)).subscribe((data: User) => console.log(data));
     } else if (this.selectedAuthMethod === AuthMethod.login) {
       if (!existingEmail) {
-        this.error = "Invalid email address"
-        return
+        this.error = "Invalid email address";
+        return;
       } else if (!existingUsername) {
-        this.error = "Invalid username"
-        return
+        this.error = "Invalid username";
+        return;
       } else if (!existingPassword) {
-        this.error = "Invalid password"
-        return
+        this.error = "Invalid password";
+        return;
       } else if (existingUsername && existingEmail && existingPassword) {
         this.usersService.activeUser.next(this.authForm.value);
-        this.router.navigate(['/homepage'])
-      };
-    };
-  };
+        this.router.navigate(['/homepage']);
+      }
+    }
+  }
 
   initializeForm(): void {
     this.authForm = this.fb.group({
@@ -91,5 +91,5 @@ export class AuthComponent implements OnInit, OnDestroy {
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]]
     });
-  };
+  }
 }
