@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core"
 import { HttpClient } from "@angular/common/http"
-import { Observable } from "rxjs"
+import { BehaviorSubject, Observable } from "rxjs"
 
 import { User } from "../models/user"
 
@@ -9,6 +9,8 @@ import { User } from "../models/user"
 })
 
 export class UsersService {
+
+    activeUser = new BehaviorSubject<User | null>(null)
 
     URL = "http://localhost:3000/users"
 
