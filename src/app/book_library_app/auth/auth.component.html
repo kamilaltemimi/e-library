@@ -23,6 +23,7 @@
             <p class="error_message" *ngIf="authForm.get('password')?.errors?.['required'] && authForm.get('password')?.touched">Password is required.</p>
             <p class="error_message" *ngIf="authForm.get('password')?.errors?.['minlength'] && authForm.get('password')?.touched">Password must be at least 5 characters.</p>
         </div>
+        <p class="error_message" *ngIf="error"> {{ error }} </p>
         <div class="button_group">
             <button (click)="goBackToChooseAuthMethod()" class="btn btn-primary">Back</button>
             <button *ngIf="selectedAuthMethod === 'login'" type="submit" class="btn btn-info">Login</button>
