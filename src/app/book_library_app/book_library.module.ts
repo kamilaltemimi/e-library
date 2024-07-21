@@ -5,10 +5,12 @@ import { AuthComponent } from './auth/auth.component'
 
 import { SharedModule } from '../shared/shared.module';
 import { BookLibraryRouterModule } from './book_library_router.module'
+import { BookLibraryHomepageComponent } from './book-library-homepage/book-library-homepage.component';
 
 @NgModule({
     declarations: [
-        AuthComponent
+        AuthComponent,
+        BookLibraryHomepageComponent
     ],
     imports: [
         CommonModule,
