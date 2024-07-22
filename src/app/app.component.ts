@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './shared/header/header.component'
+import { UsersService } from './core/services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,16 @@ import { HeaderComponent } from './shared/header/header.component'
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'book_library_project_frontend';
+export class AppComponent implements OnInit {
+
+  constructor(
+    private usersService: UsersService
+  ) {}
+  
+  ngOnInit(): void {
+    const userData = localStorage.getItem('userData')
+    const parsedData = userData ? JSON.parse(userData) : null
+    this.usersService.activeUser.next(parsedData)
+  }
+
 }
