@@ -1,0 +1,30 @@
+<div class="component_container">
+    <div  class="add_book_form_container">
+        <form [formGroup]="addBookForm">
+            <h2>Add book</h2>
+            <div class="form-group">
+                <label>Title</label>
+                <input class="form-control add_book_form_input" placeholder="Enter book title">
+            </div>
+            <div class="form-group">
+                <label>Author</label>
+                <input class="form-control add_book_form_input" placeholder="Enter book author">
+            </div>
+            <div class="form-group">
+                <label>Publication year</label>
+                <select class="form-control" size="3">
+                    <option *ngFor="let yearOption of publicationYearOptions">
+                        {{ yearOption }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Book image</label>
+                <input class="form-control-file add_book_form_input" placeholder="Added by" type="file">
+            </div>
+            <div class="button_container">
+                <button class="btn btn-primary" type="submit">Add book</button>
+            </div>
+        </form>
+    </div>
+</div>
