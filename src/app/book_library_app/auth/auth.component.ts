@@ -31,6 +31,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   ){}
 
   ngOnInit(): void {
+    const userData = localStorage.getItem('userData')
+    if (userData) {
+      const parsedData = JSON.parse(userData)
+      this.usersService.activeUser.next(parsedData)
+      this.router.navigate(['/homepage'])
+    }
     this.initializeForm();
     this.usersService.getAllUsers().subscribe((data: User[]) => this.existingUsers = data);
   }
@@ -80,6 +86,7 @@ export class AuthComponent implements OnInit, OnDestroy {
         return;
       } else if (existingUsername && existingEmail && existingPassword) {
         this.usersService.activeUser.next(this.authForm.value);
+        localStorage.setItem('userData', JSON.stringify(this.authForm.value))
         this.router.navigate(['/homepage']);
       }
     }
