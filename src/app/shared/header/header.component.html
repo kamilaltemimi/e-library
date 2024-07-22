@@ -1,6 +1,11 @@
 <nav class="navbar_container">
     <div class="navbar_content">
-        <p>asd</p>
-        <p>asd</p>
+        <p class="navbar_logo">LOGO</p>
+        <div class="navbar_menu" *ngIf="isActiveUser">
+            <p (click)="navigate('/homepage')" class="navbar_menu_item">Homepage</p>
+            <p (click)="navigate('/books')" class="navbar_menu_item">Books</p>
+            <p (click)="navigate('/profile')" class="navbar_menu_item">Profile</p>
+            <p (click)="logout()" class="navbar_menu_item">Logout</p>
+        </div>
     </div>
 </nav>

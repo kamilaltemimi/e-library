@@ -13,3 +13,23 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.navbar_menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar_menu_item, .navbar_logo {
+    margin: 0;
+    font-size: 16px;
+}
+
+.navbar_menu_item:hover {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.navbar_menu_item:active {
+    color: #000000;
+    cursor: pointer;
+}

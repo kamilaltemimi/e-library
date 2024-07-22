@@ -1,12 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../core/services/users.service';
+import { User } from '../../core/models/user';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
+  isActiveUser = false
+
+  constructor(
+    private usersService: UsersService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.initializeUser()
+  }
+
+  initializeUser() {
+    this.usersService.activeUser.subscribe((data: User | null) => {
+      data ? this.isActiveUser = true : this.isActiveUser = false;
+    })  
+  }
+
+  navigate(route: string): void {
+    this.router.navigate([route])
+  }
+
+  logout(): void {
+    this.usersService.activeUser.next(null)
+    localStorage.removeItem('userData')
+    this.router.navigate([''])
+  }
 }
