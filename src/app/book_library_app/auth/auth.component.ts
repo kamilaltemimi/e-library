@@ -85,7 +85,7 @@ export class AuthComponent implements OnInit, OnDestroy {
         this.error = "Invalid password";
         return;
       } else if (existingUsername && existingEmail && existingPassword) {
-        this.usersService.activeUser.next(this.authForm.value);
+        this.usersService.activeUser.next({...this.authForm.value, user_id: existingEmail.user_id, created_at: existingEmail.created_at});
         localStorage.setItem('userData', JSON.stringify(this.authForm.value))
         this.router.navigate(['/homepage']);
       }
