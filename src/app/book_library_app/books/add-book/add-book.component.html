@@ -1,18 +1,22 @@
 <div class="component_container">
     <div  class="add_book_form_container">
-        <form [formGroup]="addBookForm">
+        <form [formGroup]="addBookForm" (ngSubmit)="submitAddBookForm()">
             <h2>Add book</h2>
             <div class="form-group">
                 <label>Title</label>
-                <input class="form-control add_book_form_input" placeholder="Enter book title">
+                <input class="form-control add_book_form_input" placeholder="Enter book title" formControlName="title">
             </div>
             <div class="form-group">
                 <label>Author</label>
-                <input class="form-control add_book_form_input" placeholder="Enter book author">
+                <input class="form-control add_book_form_input" placeholder="Enter book author" formControlName="author">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control book_description" formControlName="description"></textarea>
             </div>
             <div class="form-group">
                 <label>Publication year</label>
-                <select class="form-control" size="3">
+                <select class="form-control" size="3" formControlName="publicationYear">
                     <option *ngFor="let yearOption of publicationYearOptions">
                         {{ yearOption }}
                     </option>
@@ -20,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label>Book image</label>
-                <input class="form-control-file add_book_form_input" placeholder="Added by" type="file">
+                <input class="form-control-file add_book_form_input" (change)="onFileChange($event)" placeholder="Added by" type="file" formControlName="bookImage">
             </div>
             <div class="button_container">
                 <button class="btn btn-primary" type="submit">Add book</button>
