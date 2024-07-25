@@ -64,13 +64,13 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     if (this.selectedAuthMethod === AuthMethod.register) {
       if (existingUsername && existingEmail) {
-        this.error = "This username and email are already chosen";
+        this.error = "This username and email are already taken";
         return;
       } else if (existingEmail) {
-        this.error = "This email is already chosen";
+        this.error = "This email is already taken";
         return;
       } else if (existingUsername) {
-        this.error = "This username is already chosen";
+        this.error = "This username is already taken";
         return;
       }
       this.usersService.addUser(this.authForm.value).pipe(takeUntil(this.destroy$)).subscribe((data: User) => console.log(data));
@@ -85,8 +85,9 @@ export class AuthComponent implements OnInit, OnDestroy {
         this.error = "Invalid password";
         return;
       } else if (existingUsername && existingEmail && existingPassword) {
-        this.usersService.activeUser.next({...this.authForm.value, user_id: existingEmail.user_id, created_at: existingEmail.created_at});
-        localStorage.setItem('userData', JSON.stringify(this.authForm.value))
+        const loggedUser = {...this.authForm.value, user_id: existingEmail.user_id, created_at: existingEmail.created_at}
+        this.usersService.activeUser.next(loggedUser);
+        localStorage.setItem('userData', JSON.stringify(loggedUser))
         this.router.navigate(['/homepage']);
       }
     }
