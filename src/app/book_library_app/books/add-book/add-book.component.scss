@@ -1,9 +1,9 @@
 .component_container {
     width: 100vw;
-    height: calc(100vh - 56px);
+    height: calc(100vh - 156px);
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    padding-top: 100px;
 }
 
 .add_book_form_input {
@@ -12,7 +12,7 @@
 
 .add_book_form_container {
     background-color: #e6e6e6;
-    height: 430px;
+    height: 580px;
     width: 370px;
     display: flex;
     justify-content: center;
@@ -23,4 +23,9 @@
     width: 100%;
     display: flex;
     justify-content: end;
+}
+
+.book_description {
+    height: 100px;
+    resize: none;
 }
