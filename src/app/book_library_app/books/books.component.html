@@ -1,15 +1,19 @@
 <div class="container">
     <div class="row">
-      <div *ngFor="let book of books" class="col-sm-6 col-md-4 book_row">
-        <div class="card">
-            <img class="card-img-top book_image" [src]="'assets/' + book.book_image" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text">{{ book.description }}</p>
-              <a href="#" class="btn btn-primary">{{book.book_image}}</a>
-
+        <div *ngFor="let book of books" class="col-md-6 col-lg-4 col-xl-3 book_row">
+            <div class="card">
+                <img class="card-img-top book_image" [src]="'assets/' + book.book_image" alt="Card image cap">
+                <div class="card_body">
+                    <h5 class="card-title">{{ book.author }}</h5>
+                    <p class="card-text">{{ book.title }}</p>
+                <div class="button_container">
+                    <button class="btn btn-info button_action" (click)="openBookDetails(book)">Details</button>
+                    <button class="btn btn-primary button_action">Borrow</button>
+                </div>
+                </div>
             </div>
-          </div>
-      </div>
+        </div>
     </div>
-  </div>
+</div>
+<app-book-details class="details_modal" *ngIf="isActiveModal"></app-book-details>
+  
