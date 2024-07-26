@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { BehaviorSubject, Observable, Subject } from 'rxjs'
 import { Book } from '../models/book'
 import { HttpClient } from '@angular/common/http'
 
@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http'
 })
 
 export class BooksService{
+
+    selectedBook = new BehaviorSubject<Book | undefined>(undefined)
 
     URL = "http://localhost:3000/books"
 
