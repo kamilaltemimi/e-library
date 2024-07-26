@@ -1,1 +1,23 @@
-<p>book-details works!</p>
+<div class="modal_container">
+    <div class="modal_row_header">
+        <div>
+            <img class="modal_book_image" [src]="'assets/' + selectedBook?.book_image">
+        </div>
+        <div class="modal_book_details">
+            <h5>Title</h5>
+            <p class="modal_book_title">{{ selectedBook?.title }}</p>
+            <h5>Author</h5>
+            <p class="modal_book_author">{{ selectedBook?.author }}</p>
+            <h5>Publication year</h5>
+            <p class="modal_book_publication_year">{{ selectedBook?.publication_year }}</p>
+        </div>
+    </div>
+    <div class="modal_row_body">
+        {{ selectedBook?.description }}
+    </div>
+    <div class="modal_row_actions">
+        <button class="btn btn-danger">Close</button>
+        <button class="btn btn-primary">Borrow</button>
+    </div>
+
+</div>
