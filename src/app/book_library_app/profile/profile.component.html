@@ -1,1 +1,30 @@
-<p>profile works!</p>
+<div class="container">
+    <h3>Active user</h3>
+    <hr>
+    <div class="profile_header">
+        <h5 class="profile_header_details_title">Email:</h5>
+        <p class="profile_header_details">{{ activeUser?.email }}</p>
+        <h5 class="profile_header_details_title">Username:</h5>
+        <p class="profile_header_details">{{ activeUser?.username }}</p>
+        <h5 class="profile_header_details_title">Created at:</h5>
+        <p class="profile_header_details">{{activeUser?.created_at}}</p>
+    </div>
+    <hr>
+    <div class="profile_body">
+        <h3>Borrowed books:</h3>
+        <div class="row">
+            <div *ngFor="let book of borrowedBooks" class="col-md-6 col-lg-4 col-xxl-3 book_row">
+                <div class="card">
+                    <img class="card-img-top book_image" [src]="'assets/' + book.book_image" alt="Card image cap">
+                    <div class="card_body">
+                        <h5 class="card-title">{{ book.author }}</h5>
+                        <p class="card-text">{{ book.title }}</p>
+                    <div class="button_container">
+                        <button class="btn btn-primary button_action">Details</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

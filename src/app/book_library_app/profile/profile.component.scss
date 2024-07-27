@@ -1,0 +1,67 @@
+.container {
+    padding-top: 56px;
+}
+
+.profile_header {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(240, 240, 240);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+    .profile_header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(240, 240, 240);
+        padding: 5px;
+        border-radius: 10px;
+    }
+}
+
+.profile_header_details {
+    margin: 0 10px;
+}
+
+.profile_header_details_title {
+    margin: 0 5px;
+}
+
+.card {
+    width: 300px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 29px -6px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 29px -6px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 29px -6px rgba(66, 68, 90, 1);
+}
+
+.book_image {
+    width: 300px;
+    height: 300px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+
+.book_image {
+    height: 350px;
+    width: 300px;
+}
+
+.book_row {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: end;
+}
+
+.card_body {
+    margin: 0 10px;
+}
