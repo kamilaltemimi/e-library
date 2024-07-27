@@ -10,19 +10,19 @@
     <form [formGroup]="authForm" *ngIf="selectedAuthMethod" (ngSubmit)="submitAuthForm()">
         <div class="input-group auth_input">
             <input type="email" formControlName="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" maxLength="30">
-            <p class="error_message" *ngIf="authForm.get('email')?.errors?.['required'] && authForm.get('email')?.touched">Email is required.</p>
-            <p class="error_message" *ngIf="authForm.get('email')?.errors?.['email'] && authForm.get('email')?.touched">Please provide a valid email address.</p>
         </div>
+        <p class="error_message" *ngIf="authForm.get('email')?.errors?.['required'] && authForm.get('email')?.touched">Email is required.</p>
+            <p class="error_message" *ngIf="authForm.get('email')?.errors?.['email'] && authForm.get('email')?.touched">Please provide a valid email address.</p>
         <div class="input-group auth_input">
             <input type="text" formControlName="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" maxLength="30">
+        </div>
             <p class="error_message" *ngIf="authForm.get('username')?.errors?.['required'] && authForm.get('username')?.touched">Username is required.</p>
             <p class="error_message" *ngIf="authForm.get('username')?.errors?.['minlength'] && authForm.get('username')?.touched">Username must be at least 3 characters.</p>
-        </div>
         <div class="input-group auth_input">
             <input type="password" formControlName="password" class="form-control" placeholder="Password" aria-label="Username" maxLength="=30">
+        </div>
             <p class="error_message" *ngIf="authForm.get('password')?.errors?.['required'] && authForm.get('password')?.touched">Password is required.</p>
             <p class="error_message" *ngIf="authForm.get('password')?.errors?.['minlength'] && authForm.get('password')?.touched">Password must be at least 5 characters.</p>
-        </div>
         <p class="error_message" *ngIf="error"> {{ error }} </p>
         <div class="button_group">
             <button (click)="goBackToChooseAuthMethod()" class="btn btn-primary">Back</button>
