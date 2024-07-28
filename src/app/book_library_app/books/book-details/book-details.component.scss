@@ -1,7 +1,7 @@
 .modal_container {
-    background-color: white;
+    background-color: #ffffff;
     width: 500px;
-    height: 480px;
+    height: auto;
     border-radius: 15px;
     padding: 10px;
 }
@@ -19,7 +19,12 @@
 
 .modal_row_body {
     margin: 0 5px;
-    height: 220px;
+    height: auto;
+    max-height: 200px;
+    max-width: 100%;
+    word-wrap: break-word; /* Umożliwia zawijanie długich słów */
+    overflow-y: scroll;
+    scrollbar-width: none; 
 }
 
 .modal_book_title, 

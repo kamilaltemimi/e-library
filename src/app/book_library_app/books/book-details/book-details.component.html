@@ -12,12 +12,14 @@
             <p class="modal_book_publication_year">{{ selectedBook?.publication_year }}</p>
         </div>
     </div>
+    <hr>
     <div class="modal_row_body">
-        {{ selectedBook?.description }}
+        <p>{{ selectedBook?.description }}</p>
     </div>
     <div class="modal_row_actions">
-        <button class="btn btn-danger">Close</button>
-        <button class="btn btn-primary">Borrow</button>
+        <button class="btn btn-danger" (click)="closeModal()">Close</button>
+        <button class="btn btn-primary" *ngIf="fromWhichComponentTheModalIsOpened === 'BooksComponent'">Borrow</button>
+        <button class="btn btn-primary" *ngIf="fromWhichComponentTheModalIsOpened === 'ProfileComponent'">Return book</button>
     </div>
 
 </div>
