@@ -31,7 +31,6 @@ export class AddBookComponent implements OnInit {
     }
   }
 
-
   initializeForm(): void {
     this.addBookForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -50,9 +49,7 @@ export class AddBookComponent implements OnInit {
     }
   }
   
-
   submitAddBookForm(): void {
       this.booksService.addNewBook({...this.addBookForm.value, bookImage: this.selectedFile.name}).subscribe(data => console.log(data))
   }
-  
 }
