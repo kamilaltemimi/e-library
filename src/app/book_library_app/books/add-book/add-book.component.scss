@@ -12,11 +12,12 @@
 
 .add_book_form_container {
     background-color: #e6e6e6;
-    height: 580px;
-    width: 370px;
+    height: 600px;
+    width: 350px;
     display: flex;
     justify-content: center;
     border-radius: 25px;
+    padding-top: 20px;
 }
 
 .button_container {
@@ -28,4 +29,13 @@
 .book_description {
     height: 100px;
     resize: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.file_container {
+    display: flex;
+    flex-direction: column;
 }

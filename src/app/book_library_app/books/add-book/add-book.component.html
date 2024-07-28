@@ -23,8 +23,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Book image</label>
-                <input class="form-control-file add_book_form_input" (change)="onFileChange($event)" placeholder="Added by" type="file" formControlName="bookImage">
+                <div class="file_container">
+                    <label>Book image</label>
+                    <input class="form-control-file add_book_form_input" (change)="onFileChange($event)" placeholder="Added by" type="file" formControlName="bookImage">
+                </div>
             </div>
             <div class="button_container">
                 <button class="btn btn-primary" type="submit">Add book</button>
