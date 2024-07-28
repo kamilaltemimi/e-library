@@ -1,10 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { User } from '../../core/models/user';
 import { UsersService } from '../../core/services/users.service';
-import { firstValueFrom, map } from 'rxjs';
+import { map } from 'rxjs';
 import { BooksService } from '../../core/services/books.service';
 import { Book } from '../../core/models/book';
-import { BorrowedBook } from '../../core/models/borrowed-book';
 
 @Component({
   selector: 'app-profile',
@@ -55,9 +54,10 @@ export class ProfileComponent implements OnInit {
     this.booksService.detectSelectedBook()
     this.booksService.isActiveModalBehaviorSubject.subscribe((data: boolean) => {
       this.isActiveModal = data
+      this.getBorrowedBooks()
     })
   }
-  
+
   openBookDetails(book: Book): void {
     this.booksService.openBookDetails(book, 'ProfileComponent')
   }
