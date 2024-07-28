@@ -18,14 +18,14 @@ import { BookDetailsComponent } from './books/book-details/book-details.componen
         BookLibraryHomepageComponent,
         BooksComponent,
         AddBookComponent,
-        BookDetailsComponent,
         ProfileComponent
     ],
     imports: [
         CommonModule,
         BookLibraryRouterModule,
         SharedModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BookDetailsComponent
     ],
     exports: []
 })
