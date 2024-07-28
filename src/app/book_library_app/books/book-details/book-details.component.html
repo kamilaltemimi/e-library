@@ -16,10 +16,11 @@
     <div class="modal_row_body">
         <p>{{ selectedBook?.description }}</p>
     </div>
+    <p *ngIf="alreadyBorrowedBook" class="error_message">{{ alreadyBorrowedBook }}</p>
     <div class="modal_row_actions">
         <button class="btn btn-danger" (click)="closeModal()">Close</button>
-        <button class="btn btn-primary" *ngIf="fromWhichComponentTheModalIsOpened === 'BooksComponent'">Borrow</button>
-        <button class="btn btn-primary" *ngIf="fromWhichComponentTheModalIsOpened === 'ProfileComponent'">Return book</button>
+        <button class="btn btn-primary" *ngIf="fromWhichComponentTheModalIsOpened === 'BooksComponent'" (click)="borrowBook()">Borrow</button>
+        <button class="btn btn-primary" *ngIf="fromWhichComponentTheModalIsOpened === 'ProfileComponent'" (click)="returnBorrowedBook()">Return book</button>
     </div>
 
 </div>
