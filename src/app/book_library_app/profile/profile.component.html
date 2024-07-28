@@ -20,7 +20,8 @@
                         <h5 class="card-title">{{ book.author }}</h5>
                         <p class="card-text">{{ book.title }}</p>
                     <div class="button_container">
-                        <button class="btn btn-primary button_action">Details</button>
+                        <button class="btn btn-primary button_action" (click)="openBookDetails(book)">Details</button>
+                        <button class="btn btn-danger button_action" (click)="returnBorrowedBook(activeUser!.user_id!, book!.book_id!)">Return book</button>
                     </div>
                     </div>
                 </div>
@@ -28,3 +29,4 @@
         </div>
     </div>
 </div>
+<app-book-details class="details_modal" *ngIf="isActiveModal"></app-book-details>
