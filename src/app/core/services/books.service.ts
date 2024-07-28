@@ -40,6 +40,10 @@ export class BooksService{
         return this.http.delete<void>(`${this.URL}/borrowed-books/${userId}/${bookId}`)
     }
 
+    borrowBook(userId: number, bookId: number): Observable<BorrowedBook> {
+        return this.http.post<BorrowedBook>(`${this.URL}/borrowed-books/${userId}`, { bookId })
+    }
+
     openBookDetails(book: Book, component: string): void {
         this.selectedBook.next(book)
         this.bookDetailsComponentOpenedFrom.next(component)
