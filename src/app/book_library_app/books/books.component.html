@@ -1,4 +1,6 @@
 <div class="container">
+    <button class="btn btn-warning button_add_book" (click)="navigateToAddNewBookComponent()">Add new book</button>
+    <hr>
     <div class="row">
         <div *ngFor="let book of books" class="col-md-6 col-lg-4 col-xl-3 book_row">
             <div class="card">
@@ -7,8 +9,7 @@
                     <h5 class="card-title">{{ book.author }}</h5>
                     <p class="card-text">{{ book.title }}</p>
                 <div class="button_container">
-                    <button class="btn btn-info button_action" (click)="openBookDetails(book)">Details</button>
-                    <button class="btn btn-primary button_action">Borrow</button>
+                    <button class="btn btn-primary button_action" (click)="openBookDetails(book)">Details</button>
                 </div>
                 </div>
             </div>

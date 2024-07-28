@@ -3,7 +3,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { BooksService } from '../../core/services/books.service';
 
 import { Book } from '../../core/models/book';
-import { EventEmitter } from 'stream';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -17,19 +17,35 @@ export class BooksComponent implements OnInit {
   isActiveModal = false
 
   constructor(
-    private booksService: BooksService
+    private booksService: BooksService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.getAllBooks()
+    this.detectSelectedBook()
+  }
+
+  getAllBooks(): void {
     this.booksService.getAllBooks().subscribe((books: Book[]) => {
       this.books = books
       console.log(books)
     })
   }
 
+  detectSelectedBook(): void {
+    this.booksService.detectSelectedBook()
+    this.booksService.isActiveModalBehaviorSubject.subscribe((data: boolean) => {
+      this.isActiveModal = data
+    })
+  }
+
   openBookDetails(book: Book): void {
-    this.isActiveModal = true;
-    this.booksService.selectedBook.next(book)
+    this.booksService.openBookDetails(book, 'BooksComponent')
+  }
+
+  navigateToAddNewBookComponent(): void {
+    this.router.navigate(['books/add-book'])
   }
 
 }
