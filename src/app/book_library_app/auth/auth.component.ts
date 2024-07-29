@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { UsersService } from '../../core/services/users.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { User } from '../../core/models/user';
 import { AuthMethod } from '../../core/enums/auth_method';
+
+import { UsersService } from '../../core/services/users.service';
 
 @Component({
   selector: 'app-auth',
@@ -56,9 +57,10 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   submitAuthForm(): void {
-    const existingUsername = this.existingUsers.find((user: User) => user.username === this.authForm.get("username")?.value);
-    const existingEmail = this.existingUsers.find((user: User) => user.email === this.authForm.get("email")?.value);
-    const existingPassword = this.existingUsers.find((user: User) => user.password === this.authForm.get("password")?.value);
+    const { email, username, password } = this.authForm.value;
+    const existingEmail = this.existingUsers.find((user: User) => user.email === email);
+    const existingUsername = this.existingUsers.find((user: User) => user.username === username);
+    const existingPassword = this.existingUsers.find((user: User) => user.email === email && user.username === username && user.password === password);
 
     this.error = null;
 

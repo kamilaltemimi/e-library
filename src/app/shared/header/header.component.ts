@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../core/services/users.service';
-import { User } from '../../core/models/user';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'
+
+import { User } from '../../core/models/user';
+
+import { UsersService } from '../../core/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,7 @@ import { Router } from '@angular/router'
 })
 export class HeaderComponent implements OnInit {
 
-  isActiveUser = false
+  isActiveUser = false;
 
   constructor(
     private usersService: UsersService,
@@ -21,22 +23,22 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initializeUser()
+    this.initializeUser();
   }
 
   initializeUser() {
     this.usersService.activeUser.subscribe((data: User | null) => {
       data ? this.isActiveUser = true : this.isActiveUser = false;
-    })  
+    });
   }
 
   navigate(route: string): void {
-    this.router.navigate([route])
+    this.router.navigate([route]);
   }
 
   logout(): void {
-    this.usersService.activeUser.next(null)
-    localStorage.removeItem('userData')
-    this.router.navigate([''])
+    this.usersService.activeUser.next(null);
+    localStorage.removeItem('userData');
+    this.router.navigate(['']);
   }
 }

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../../../core/services/books.service';
-import { Book } from '../../../core/models/book';
 import { CommonModule } from '@angular/common';
-import { User } from '../../../core/models/user';
-import { UsersService } from '../../../core/services/users.service';
 import { map } from 'rxjs';
+
+import { User } from '../../../core/models/user';
+import { Book } from '../../../core/models/book';
+
+import { BooksService } from '../../../core/services/books.service';
+import { UsersService } from '../../../core/services/users.service';
 
 @Component({
   selector: 'app-book-details',
@@ -15,11 +17,11 @@ import { map } from 'rxjs';
 })
 export class BookDetailsComponent implements OnInit {
 
-  selectedBook!: Book | null
-  fromWhichComponentTheModalIsOpened: string | null = ''
-  activeUser: User | null = null
-  booksIds: number[] = []
-  alreadyBorrowedBook = ''
+  selectedBook!: Book | null;
+  fromWhichComponentTheModalIsOpened: string | null = '';
+  activeUser: User | null = null;
+  booksIds: number[] = [];
+  alreadyBorrowedBook = '';
 
   constructor(
     private booksService: BooksService,
@@ -27,32 +29,32 @@ export class BookDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.setActiveUser()
-    this.detectSelectedBook()
-    this.detectFromWhichComponentModalIsOpened()
-    this.getAlreadyBorrowedBooksIds()
+    this.setActiveUser();
+    this.detectSelectedBook();
+    this.detectFromWhichComponentModalIsOpened();
+    this.getAlreadyBorrowedBooksIds();
   }
 
   setActiveUser(): void {
-    this.usersService.activeUser.subscribe((data: User | null) => this.activeUser = data)
+    this.usersService.activeUser.subscribe((data: User | null) => this.activeUser = data);
   }
 
   detectSelectedBook(): void {
     this.booksService.selectedBook.subscribe((book: Book | null) => {
-      this.selectedBook = book
-    })
+      this.selectedBook = book;
+    });
   }
 
   detectFromWhichComponentModalIsOpened(): void {
     this.booksService.bookDetailsComponentOpenedFrom.subscribe((data: string | null) => {
-      this.fromWhichComponentTheModalIsOpened = data
-    })
+      this.fromWhichComponentTheModalIsOpened = data;
+    });
   }
 
   returnBorrowedBook(): void {
     this.booksService.returnBorrowedBook(this.activeUser!.user_id!, this.selectedBook!.book_id!).subscribe(() => {
-      this.closeModal()
-    })
+      this.closeModal();
+    });
   }
 
   getAlreadyBorrowedBooksIds(): void {
@@ -60,25 +62,23 @@ export class BookDetailsComponent implements OnInit {
       map((books: Book[]) => {
         for (let i = 0; i < books.length; i ++) {
           this.booksIds.push(books[i].book_id!)
-        }
-      })).subscribe()
+        };
+      })).subscribe();
   }
 
   borrowBook(): void {
     const alreadyBorrowedBook = this.booksIds.find((id: number) => id === this.selectedBook!.book_id);
-
     if (!alreadyBorrowedBook){
       this.booksService.borrowBook(this.activeUser!.user_id, this.selectedBook!.book_id!).subscribe(() => {
-        this.closeModal()
-      })
+        this.closeModal();
+      });
     } else {
-      this.alreadyBorrowedBook = 'You have already borrowed this book!'
-    }
+      this.alreadyBorrowedBook = 'You have already borrowed this book!';
+    };
   }
 
   closeModal(): void {
-    this.booksService.selectedBook.next(null)
-    this.booksService.bookDetailsComponentOpenedFrom.next(null)
+    this.booksService.selectedBook.next(null);
+    this.booksService.bookDetailsComponentOpenedFrom.next(null);
   }
-
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../../core/services/users.service';
+
 import { User } from '../../../core/models/user';
+
 import { BooksService } from '../../../core/services/books.service';
+import { UsersService } from '../../../core/services/users.service';
 
 @Component({
   selector: 'app-add-book',
@@ -12,10 +14,10 @@ import { BooksService } from '../../../core/services/books.service';
 })
 export class AddBookComponent implements OnInit {
 
-  addBookForm!: FormGroup
-  activeUser!: User
-  publicationYearOptions: number[] = []
-  selectedFile!: File
+  addBookForm!: FormGroup;
+  activeUser!: User;
+  publicationYearOptions: number[] = [];
+  selectedFile!: File;
 
   constructor(
     private fb: FormBuilder,
@@ -27,8 +29,8 @@ export class AddBookComponent implements OnInit {
     this.activeUser = this.usersService.activeUser.value!;
     this.initializeForm();
     for (let i = 1901; i <= 2024; i ++) {
-      this.publicationYearOptions.push(i)
-    }
+      this.publicationYearOptions.push(i);
+    };
   }
 
   initializeForm(): void {
@@ -46,10 +48,10 @@ export class AddBookComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-    }
+    };
   }
   
   submitAddBookForm(): void {
-      this.booksService.addNewBook({...this.addBookForm.value, bookImage: this.selectedFile.name}).subscribe(data => console.log(data))
+      this.booksService.addNewBook({...this.addBookForm.value, bookImage: this.selectedFile.name}).subscribe();
   }
 }
