@@ -33,3 +33,49 @@
     color: #000000;
     cursor: pointer;
 }
+
+@media (max-width: 650px) {
+    .navbar_menu {
+        display: none;
+    };
+}
+
+.menu_icon {
+    font-size: 36px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.menu_icon:hover {
+    color: #ffffff;
+}
+
+@media (min-width: 651px) {
+    .menu_icon {
+        display: none;
+    };
+}
+
+.menu {
+    background-color: #ededed;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar_toggle_menu_item {
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.navbar_toggle_menu_item:hover {
+    font-size: 36px;
+    color: #ffffff;
+}

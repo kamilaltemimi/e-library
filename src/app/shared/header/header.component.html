@@ -7,5 +7,14 @@
             <p (click)="navigate('/profile')" class="navbar_menu_item">Profile</p>
             <p (click)="logout()" class="navbar_menu_item">Logout</p>
         </div>
+        <div class="menu_icon" (click)="onToggleMenu()">
+            ☰
+        </div>
+        <div class="menu" *ngIf="toggleMenu">
+            <p (click)="navigate('/homepage')" class="navbar_toggle_menu_item">Homepage</p>
+            <p (click)="navigate('/books')" class="navbar_toggle_menu_item">Books</p>
+            <p (click)="navigate('/profile')" class="navbar_toggle_menu_item">Profile</p>
+            <p (click)="logout()" class="navbar_toggle_menu_item">Logout</p>
+        </div>
     </div>
 </nav>

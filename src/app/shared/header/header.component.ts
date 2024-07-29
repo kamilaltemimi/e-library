@@ -16,6 +16,7 @@ import { UsersService } from '../../core/services/users.service';
 export class HeaderComponent implements OnInit {
 
   isActiveUser = false;
+  toggleMenu = false;
 
   constructor(
     private usersService: UsersService,
@@ -32,13 +33,19 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  onToggleMenu(): void {
+    this.toggleMenu = !this.toggleMenu;
+  }
+
   navigate(route: string): void {
     this.router.navigate([route]);
+    this.toggleMenu = false;
   }
 
   logout(): void {
     this.usersService.activeUser.next(null);
     localStorage.removeItem('userData');
     this.router.navigate(['']);
+    this.toggleMenu = false;
   }
 }
